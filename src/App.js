@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
+import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from "./pages/Home";
 import About from "./pages/About";
 import Courses from "./pages/Courses";

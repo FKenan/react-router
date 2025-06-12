@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router";
 export default function HelpLayout() {
   return (
     <div id="help-layout">
-      <h1>Help Layout</h1>
+      <h1>Help</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, magni
         veritatis facilis odit, ipsa rerum, alias dolorem minima dolorum
