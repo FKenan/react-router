@@ -9,7 +9,7 @@ export default function ContactPage() {
         </div>
         <div>
           <label htmlFor="message">Message:</label>
-          <textarea name="message"></textarea>
+          <textarea name="message" id="message"></textarea>
         </div>
         <button type="submit">Submit</button>
       </form>

@@ -1,6 +1,6 @@
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 
-export default function Courses() {
+export default function CoursesPage() {
   const courses = useLoaderData(); // React Router'ın useLoaderData hook'u ile coursesLoader'dan gelen veriyi alıyoruz.
 
   return (
@@ -13,7 +13,7 @@ export default function Courses() {
             <div>
               <h4>{item.title}</h4>
               <p>{item.description}</p>
-              <a href="$">Detay</a>
+              <Link to={"/courses/" + item.id}>Detay</Link>
             </div>
           </div>
         ))}
