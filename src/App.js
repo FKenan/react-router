@@ -1,12 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from "./pages/Home";
 import About from "./pages/About";
-import Courses from "./pages/Courses";
+import Courses, { coursesLoader } from "./pages/Courses";
 import MainLayout from "./layouts/MainLayout";
 import HelpLayout from "./layouts/HelpLayout  ";
-import FaqPage from "./help/FaqPage";
-import ContactPage from "./help/ContactPage";
+import FaqPage from "./pages/help/FaqPage";
+import ContactPage from "./pages/help/ContactPage";
 
 // http://localhost:3000/ mainlayouta denk gelir ve home page yönlendirir.
 // http://localhost:3000/home home page yönlendirir.
@@ -26,7 +25,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> }, // bu sayfa http://localhost:3000/ adresinde gösterilir. index true olduğu için bu sayfa ana sayfa olarak kabul edilir.
       { path: "home", element: <HomePage /> }, // bu sayfa http://localhost:3000/home adresinde gösterilir.
       { path: "about", element: <About /> },
-      { path: "courses", element: <Courses /> },
+      { path: "courses", element: <Courses />, loader: coursesLoader }, // loader olarak coursesLoader fonksiyonunu atadık.useLoaderData fonksiyonunu Courses içinde çağırarak bu veriyi kullanabiliriz.
       {
         path: "help",
         element: <HelpLayout />,
