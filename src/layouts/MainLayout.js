@@ -5,9 +5,14 @@ export default function MainLayout() {
     <div id="main-layout">
       <h1>Main layout</h1>
       <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/courses">Courses</NavLink>
-        <NavLink to="/about">About</NavLink>
+        {/* end prop, bu linkin sadece tam eşleşme durumunda(yani verilen path ile bitmesi durumunda) aktif olmasını sağlar.yani http://localhost:3000/abc gelirse active classı verilmez 
+        end verilmezse bu path sürekli olarak active görünür.*/}
+        <NavLink to="/" end>
+          Home
+        </NavLink>
+        <NavLink to="about">About</NavLink>
+        <NavLink to="courses">Courses</NavLink>
+        <NavLink to="help">Help</NavLink>
       </nav>
       <main>
         <Outlet />
