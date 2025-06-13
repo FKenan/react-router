@@ -13,6 +13,7 @@ import CourseLayout from "./layouts/CourseLayout";
 import CourseCreatePage from "./pages/course/CourseCreate";
 import CourseEditPage from "./pages/course/CourseEdit";
 import { courseAction, courseDeleteAction } from "./pages/course/CourseForm";
+import NotFoundPage from "./pages/error/NotFound";
 
 // http://localhost:3000/ mainlayouta denk gelir ve home page yönlendirir.
 // http://localhost:3000/home home page yönlendirir.
@@ -75,6 +76,7 @@ const router = createBrowserRouter([
           { path: "faq", element: <FaqPage /> }, // bu sayfa http://localhost:3000/help/faq adresinde gösterilir.
         ],
       },
+      { path: "*", element: <NotFoundPage /> },
     ],
   },
 ]);

@@ -140,3 +140,16 @@ button {
     gap: 25px;
     margin-top: 20px;
 }
+
+#error {
+    text-align: center;
+}
+
+.errors {
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+.errors li {
+    color: yellow;
+}
