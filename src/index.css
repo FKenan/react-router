@@ -123,6 +123,7 @@ form button {
     background: var(--primary);
     cursor: pointer;
     text-decoration: none;
+    margin-right: 5px;
 }
 
 .course-desc {

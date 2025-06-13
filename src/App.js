@@ -10,6 +10,8 @@ import CourseDetailsPage, {
   courseDetailsLoader,
 } from "./pages/course/CourseDetails";
 import CourseLayout from "./layouts/CourseLayout";
+import CourseCreatePage from "./pages/course/CourseCreate";
+import CourseEditPage from "./pages/course/CourseEdit";
 
 // http://localhost:3000/ mainlayouta denk gelir ve home page yönlendirir.
 // http://localhost:3000/home home page yönlendirir.
@@ -36,10 +38,15 @@ const router = createBrowserRouter([
           // loader olarak coursesLoader fonksiyonunu atadık.useLoaderData fonksiyonunu Courses içinde çağırarak bu veriyi kullanabiliriz.
           { index: true, element: <CoursesPage />, loader: coursesLoader },
           {
+            id: "course-details", // bu id ile courseDetailsLoader fonksiyonuna erişebiliriz.
             path: ":courseId",
-            element: <CourseDetailsPage />,
-            loader: courseDetailsLoader,
+            loader: courseDetailsLoader, // bu loader verilerine alttaki childrenlardan ulaşabiliriz.
+            children: [
+              { index: true, element: <CourseDetailsPage /> },
+              { path: "edit", element: <CourseEditPage /> },
+            ],
           },
+          { path: "create", element: <CourseCreatePage /> },
         ],
       },
       {

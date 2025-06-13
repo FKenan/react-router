@@ -1,9 +1,10 @@
-import { Link, useLoaderData, useParams } from "react-router";
+import { useLoaderData, useRouteLoaderData } from "react-router";
 
 export default function CourseDetailsPage() {
   // const { courseId } = useParams();  => url den gelen parametreyi alma.
+  // const course = useLoaderData();   => route ta verilen loader fonksiyonundan gelen veriyi alma.
 
-  const course = useLoaderData();
+  const course = useRouteLoaderData("course-details"); // course-details id si ile tanımlanan route un loader ından gelen veriyi alma.
 
   return (
     <>
