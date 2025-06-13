@@ -1,7 +1,19 @@
-import { Link, useLoaderData } from "react-router";
+import { Form, Link, useLoaderData, useSubmit } from "react-router";
 
 export default function CoursesPage() {
   const courses = useLoaderData(); // React Router'ın useLoaderData hook'u ile coursesLoader'dan gelen veriyi alıyoruz.
+  const submit = useSubmit();
+
+  function handleDelete(id) {
+    const confirm = window.confirm("Silmek istediğinize emin misiniz?");
+    if (confirm) {
+      // form submit eder action urlsine gider delete action çalışır.
+      submit(null, {
+        method: "DELETE",
+        action: "/courses/" + id + "/delete",
+      });
+    }
+  }
 
   return (
     <>
@@ -15,6 +27,7 @@ export default function CoursesPage() {
               <p>{item.description}</p>
               <Link to={"/courses/" + item.id}>Detay</Link>
               <Link to={item.id + "/edit"}>Edit</Link>
+              <button onClick={() => handleDelete(item.id)}>Delete</button>
             </div>
           </div>
         ))}

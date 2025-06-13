@@ -12,7 +12,7 @@ import CourseDetailsPage, {
 import CourseLayout from "./layouts/CourseLayout";
 import CourseCreatePage from "./pages/course/CourseCreate";
 import CourseEditPage from "./pages/course/CourseEdit";
-import { courseAction } from "./pages/course/CourseForm";
+import { courseAction, courseDeleteAction } from "./pages/course/CourseForm";
 
 // http://localhost:3000/ mainlayouta denk gelir ve home page yönlendirir.
 // http://localhost:3000/home home page yönlendirir.
@@ -49,6 +49,7 @@ const router = createBrowserRouter([
                 element: <CourseEditPage />,
                 action: courseAction,
               },
+              { path: "delete", action: courseDeleteAction }, // courseDeleteAction fonksiyonu form submit edildiğinde çalışır.
             ],
           },
           {

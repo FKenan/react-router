@@ -1,7 +1,10 @@
 import React from "react";
-import { Form, redirect } from "react-router";
+import { Form, redirect, useNavigation } from "react-router";
 
 export default function CourseForm({ method, data }) {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting"; // Formun submit edilirken true, haricinde false
+
   return (
     <Form method={method}>
       <div>
@@ -35,7 +38,9 @@ export default function CourseForm({ method, data }) {
           defaultValue={data ? data.description : ""}
         />
       </div>
-      <button type="submit">Submit</button>
+      <button disabled={isSubmitting} type="submit">
+        {isSubmitting ? "Kayıt ediliyor..." : "Kaydet"}
+      </button>
     </Form>
   );
 }
@@ -63,6 +68,17 @@ export async function courseAction({ request, params }) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(eventData),
+  });
+
+  if (response.ok) {
+    return redirect("/courses"); // Başarılı ise /courses sayfasına yönlendirir.
+  }
+}
+
+export async function courseDeleteAction({ params, request }) {
+  const { courseId } = params;
+  const response = await fetch(`http://localhost:5000/courses/${courseId}`, {
+    method: request.method, // DELETE metodunu kullanır.
   });
 
   if (response.ok) {
