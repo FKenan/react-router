@@ -14,6 +14,7 @@ import CourseCreatePage from "./pages/course/CourseCreate";
 import CourseEditPage from "./pages/course/CourseEdit";
 import { courseAction, courseDeleteAction } from "./pages/course/CourseForm";
 import NotFoundPage from "./pages/error/NotFound";
+import ErrorPage from "./pages/error/Error";
 
 // http://localhost:3000/ mainlayouta denk gelir ve home page yönlendirir.
 // http://localhost:3000/home home page yönlendirir.
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
       {
         path: "courses",
         element: <CourseLayout />,
+        errorElement: <ErrorPage />, // courseDetailsLoader fonksiyonu hata verirse bu sayfa gösterilir.
         children: [
           // loader olarak coursesLoader fonksiyonunu atadık.useLoaderData fonksiyonunu Courses içinde çağırarak bu veriyi kullanabiliriz.
           { index: true, element: <CoursesPage />, loader: coursesLoader },

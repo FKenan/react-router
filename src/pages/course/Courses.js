@@ -38,5 +38,9 @@ export default function CoursesPage() {
 
 export async function coursesLoader() {
   const response = await fetch("http://localhost:5000/courses");
+
+  if (!response.ok) {
+    throw new Response("Kurs listesi yüklenemedi.", { status: 404 });
+  }
   return response.json();
 }

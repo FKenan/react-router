@@ -34,5 +34,8 @@ export default function CourseDetailsPage() {
 export async function courseDetailsLoader({ params }) {
   const { courseId } = params; // urlden gelen courseId parametresini alıyoruz.
   const response = await fetch("http://localhost:5000/courses/" + courseId);
+  if (!response.ok) {
+    throw new Response("Kurs bulunamadı.", { status: 404 });
+  }
   return response.json();
 }
