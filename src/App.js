@@ -10,7 +10,7 @@ import CourseDetailsPage, {
   courseDetailsLoader,
 } from "./pages/course/CourseDetails";
 import CourseLayout from "./layouts/CourseLayout";
-import CourseCreatePage from "./pages/course/CourseCreate";
+import CourseCreatePage, { courseAction } from "./pages/course/CourseCreate";
 import CourseEditPage from "./pages/course/CourseEdit";
 
 // http://localhost:3000/ mainlayouta denk gelir ve home page yönlendirir.
@@ -43,10 +43,18 @@ const router = createBrowserRouter([
             loader: courseDetailsLoader, // bu loader verilerine alttaki childrenlardan ulaşabiliriz.
             children: [
               { index: true, element: <CourseDetailsPage /> },
-              { path: "edit", element: <CourseEditPage /> },
+              {
+                path: "edit",
+                element: <CourseEditPage />,
+                action: courseAction,
+              },
             ],
           },
-          { path: "create", element: <CourseCreatePage /> },
+          {
+            path: "create",
+            element: <CourseCreatePage />,
+            action: courseAction, //Bu fonksiyon form submit edildiğinde çalışır.
+          },
         ],
       },
       {

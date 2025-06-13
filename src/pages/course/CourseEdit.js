@@ -1,7 +1,8 @@
 import { useRouteLoaderData } from "react-router";
+import CourseForm from "./CourseForm";
 
 export default function CourseEditPage() {
   const course = useRouteLoaderData("course-details");
 
-  return <div>CourseEdit : {course.title}</div>;
+  return <CourseForm data={course} method="PUT" />;
 }
