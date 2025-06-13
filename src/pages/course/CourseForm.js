@@ -43,8 +43,12 @@ export default function CourseForm({ method, data }) {
 export async function courseAction({ request, params }) {
   const data = await request.formData(); // Form verilerini alır.
   const method = request.method;
+
+  let url = "http://localhost:5000/courses";
+
   if (method === "PUT") {
     const courseId = params.courseId;
+    url += "/" + courseId; // PUT isteği için URL'yi günceller.
   }
 
   const eventData = {
@@ -53,8 +57,8 @@ export async function courseAction({ request, params }) {
     description: data.get("description"),
   };
 
-  const response = await fetch("http://localhost:5000/courses", {
-    method: "POST",
+  const response = await fetch(url, {
+    method: method, // PUT veya POST metodunu kullanır.
     headers: {
       "Content-Type": "application/json",
     },
